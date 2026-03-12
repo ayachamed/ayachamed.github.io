@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Ayacha | Aspirant Ingénieur Cloud & DevOps</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* Variables de couleurs */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 { color: var(--text-main); font-weight: 600; }
+        p { color: var(--text-muted); line-height: 1.6; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
+        a:hover { color: var(--accent-hover); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .hero .typing-container {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            color: var(--accent);
+            margin-top: 10px;
+            margin-bottom: 25px;
+            min-height: 40px;
+        }
+        
+        .hero-objective {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 25px;
+            max-width: 700px;
+        }
+
+        .hero-objective strong { color: var(--text-main); }
+
+        .social-links { display: flex; gap: 20px; flex-wrap: wrap; }
+        .social-links a, .social-links span {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        .social-links span { font-size: 1rem; cursor: default; }
+
+        /* Sections */
+        section { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        section h2 { font-size: 2rem; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; }
+        section h2 i { color: var(--accent); }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .card-title { margin: 0; font-size: 1.3rem; color: var(--text-main); }
+        .card-subtitle { color: var(--accent); font-family: 'Fira Code', monospace; font-size: 0.9rem; margin-top: 5px; }
+        .card-date { color: var(--text-muted); font-size: 0.9rem; }
+        .card ul { padding-left: 20px; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;}
+        .card ul li { margin-bottom: 8px; }
+
+        /* Badges */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .skill-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: all 0.3s ease;
+        }
+        .skill-badge:hover {
+            background: var(--accent);
+            color: var(--bg-color);
+        }
+
+        /* Layout grids */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* Footer & Call To Action (Nouveau CSS) */
+        .footer-pro {
+            text-align: center;
+            padding: 60px 0 20px;
+            margin-top: 40px;
+        }
+        
+        .cta-container {
+            background: var(--card-bg);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px -15px rgba(56, 189, 248, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #818cf8);
+        }
+
+        .cta-container h2 {
+            margin-top: 0;
+            color: var(--text-main);
+            font-size: 1.8rem;
+        }
+
+        .cta-container p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--text-main);
+        }
+
+        .cta-container strong {
+            color: var(--accent);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-color);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(56, 189, 248, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-bottom i {
+            color: #e25555;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Arrière-plan animé -->
+<div id="particles-js"></div>
+
+<div class="container">
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1 data-aos="fade-down" data-aos-duration="1000">Mohamed Ayacha</h1>
+        <div class="typing-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            > <span id="typed"></span>
+        </div>
+        
+        <div class="hero-objective" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <p style="margin: 0;">
+                <strong>🎯 À la recherche d'une alternance DevOps / Cloud à Paris</strong><br>
+                (Dès sept. 2026 - Rythme : 1 sem. école / 3 sem. entreprise)
+            </p>
+        </div>
+
+        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" style="max-width: 700px; margin-bottom: 30px;">
+            Étudiant en sciences informatiques doté d'un fort intérêt pour l'Infrastructure as Code (IaC) et l'automatisation. 
+            Familiarisé avec l'administration Linux et le cycle de vie applicatif, je conçois des déploiements automatisés et des infrastructures scalables et sécurisées.
+        </p>
+
+        <!-- Liens et infos de contact rapides -->
+        <div class="social-links" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+            <a href="mailto:ayachamed1919@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/ayachamed" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/mohamed-ayacha" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="skills">
+        <h2 data-aos="fade-right"><i class="fas fa-code"></i> Compétences Techniques</h2>
+        
+        <div class="card" data-aos="fade-up">
+            <h3 style="margin-top:0;">☁️ Cloud, IaC & CI/CD</h3>
+            <div class="skills-grid">
+                <span class="skill-badge">Microsoft Azure</span>
+                <span class="skill-badge">Terraform</span>
+                <span class="skill-badge">Docker</span>
+                <span class="skill-badge">GitHub Actions</span>
+                <span class="skill-badge">Git</span>
+                <span class="skill-badge">Agile/Scrum & Kanban</span>
+            </div>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <h3 style="margin-top:0;">🐧 SysAdmin & Automatisation</h3>
+            <div class="skills-grid">
+                <span class="skill-badge">Linux (Ubuntu)</span>
+                <span class="skill-badge">Bash</span>
+                <span class="skill-badge">PowerShell</span>
+                <span class="skill-badge">Windows Server</span>
+            </div>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <h3 style="margin-top:0;">💻 Développement & Data</h3>
+            <div class="skills-grid">
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">Java & Spring Boot</span>
+                <span class="skill-badge">React</span>
+                <span class="skill-badge">Angular</span>
+                <span class="skill-badge">Node.js</span>
+                <span class="skill-badge">MySQL & MongoDB</span>
+                <span class="skill-badge">PySpark & Hadoop</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expériences professionnelles -->
+    <section id="experience">
+        <h2 data-aos="fade-right"><i class="fas fa-briefcase"></i> Expériences</h2>
+
+        <div class="card" data-aos="fade-up">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Développeur Full Stack (PFE)</h3>
+                    <div class="card-subtitle">XTENSUS</div>
+                </div>
+                <div class="card-date">Fév 2025 – Présent | Tunis (Hybride)</div>
+            </div>
+            <ul>
+                <li>Conception et développement de <strong>XTalent</strong>, une plateforme ATS d’entreprise digitalisant le cycle de recrutement.</li>
+                <li>Mise en place d’une architecture multi-tiers sécurisée (RBAC, JWT) via <strong>Spring Boot, Angular et MySQL</strong>.</li>
+                <li>Automatisation des workflows RH : ingestion/parsing intelligent de CV, génération d'évaluations et gestion via Kanban.</li>
+            </ul>
+        </div>
+
+        <div class="card" data-aos="fade-up">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Transcripteur Freelance</h3>
+                    <div class="card-subtitle">Sigma AI</div>
+                </div>
+                <div class="card-date">Juil 2024 – Présent | Télétravail</div>
+            </div>
+            <ul>
+                <li>Annotation de données multilingues pour l’entraînement de modèles d'Intelligence Artificielle (NLP).</li>
+                <li>Travail exigeant une forte rigueur et un respect strict des délais de livraison.</li>
+            </ul>
+        </div>
+
+        <div class="card" data-aos="fade-up">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Support IT</h3>
+                    <div class="card-subtitle">ETAP</div>
+                </div>
+                <div class="card-date">Août 2024 – Sept 2024 | Tunis</div>
+            </div>
+            <ul>
+                <li>Assistance technique de niveau 1 et 2 sur l’infrastructure réseau interne, garantissant la continuité des services.</li>
+                <li>Contribution à l’amélioration des outils internes via le <strong>développement d’une application Python (GUI)</strong> pour la gestion de stock.</li>
+                <li>Rédaction et documentation des processus d’intégration IT.</li>
+            </ul>
+        </div>
+
+        <div class="card" data-aos="fade-up">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">UI/UX Designer & Développeur</h3>
+                    <div class="card-subtitle">CoWorky</div>
+                </div>
+                <div class="card-date">Août 2022 – Sept 2022 | Télétravail</div>
+            </div>
+            <ul>
+                <li>Participation à un challenge technologique hebdomadaire (équipe de 4) sur des thématiques : blockchain, IA, Python et dev web.</li>
+                <li>Contribution à la conception UI/UX de prototypes et développement de composants modernes.</li>
+                <li>Coordination de l’équipe pour structurer les idées et livrer des solutions chaque semaine.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projets techniques -->
+    <section id="projects">
+        <h2 data-aos="fade-right"><i class="fas fa-rocket"></i> Projets & Architectures</h2>
+        
+        <div class="projects-grid">
+            
+            <div class="card" data-aos="zoom-in" style="margin-bottom: 0;">
+                <h3 class="card-title">Cloud HA & 2-Tier</h3>
+                <div class="card-subtitle">Azure, Terraform, Linux VMs, Bash</div>
+                <p style="font-size: 0.9rem; margin-top: 15px;">
+                    Déploiement automatisé (IaC) d’une infrastructure web robuste avec Azure Load Balancer, NAT Gateway et Bastion pour une redondance multizones. Segmentation réseau stricte pour sécuriser la stack LAMP.
+                </p>
+            </div>
+
+            <div class="card" data-aos="zoom-in" data-aos-delay="100" style="margin-bottom: 0;">
+                <h3 class="card-title">AutoSync</h3>
+                <div class="card-subtitle">PowerShell, Windows Server</div>
+                <p style="font-size: 0.9rem; margin-top: 15px;">
+                    Conception d’un script d’automatisation détectant dynamiquement les clés USB pour exécuter des sauvegardes incrémentielles en arrière-plan, renforçant la sécurité des données internes.
+                </p>
+            </div>
+
+            <div class="card" data-aos="zoom-in" data-aos-delay="200" style="margin-bottom: 0;">
+                <h3 class="card-title">Sentilytics – Pipeline Big Data</h3>
+                <div class="card-subtitle">PySpark, Hadoop, Python</div>
+                <p style="font-size: 0.9rem; margin-top: 15px;">
+                    Développement d’un pipeline de données complet conçu pour le traitement à grande échelle et l’analyse de sentiments à partir de métadonnées de vidéos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation, Certifications & Langues -->
+    <section id="education">
+        <h2 data-aos="fade-right"><i class="fas fa-graduation-cap"></i> Formations & Certifications</h2>
+        
+        <div class="projects-grid">
+            <!-- Colonne Études -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-header" style="margin-bottom: 5px;">
+                    <div>
+                        <h3 class="card-title">Licence Sciences de l’Informatique</h3>
+                        <div class="card-subtitle">ISAMM, Université de la Manouba</div>
+                    </div>
+                    <div class="card-date">Sept 2023 – Juin 2026</div>
+                </div>
+                <p style="margin-top: 0;"><strong>Modules :</strong> Architectures Cloud, Systèmes Distribués, Algorithmique, SQL.</p>
+                
+                <hr style="border-color: rgba(255,255,255,0.05); margin: 20px 0;">
+                
+<h3 class="card-title" style="margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+                     Engagement Associatif & Leadership
+                </h3>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li style="margin-bottom: 12px;">
+                        <i class="fas fa-angle-right" style="color: var(--accent); font-size: 0.9em; margin-right: 8px;"></i>
+                        <strong>Responsable Marketing</strong> <span style="color: var(--text-muted);">| BIL Mornaguia & Tunivisions LFM</span>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-left: 18px; margin-top: 4px; line-height: 1.4;">
+                            Élaboration de stratégies de communication et gestion de projets événementiels.
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <i class="fas fa-angle-right" style="color: var(--accent); font-size: 0.9em; margin-right: 8px;"></i>
+                        <strong>Graphiste & Membre Actif</strong> <span style="color: var(--text-muted);">| ISAMM Problem Solving Club</span>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-left: 18px; margin-top: 4px; line-height: 1.4;">
+                            Création d'identités visuelles et participation collaborative aux défis algorithmiques.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-angle-right" style="color: var(--accent); font-size: 0.9em; margin-right: 8px;"></i>
+                        <strong>Membre Actif</strong> <span style="color: var(--text-muted);">| Microsoft Tech Club LPBT</span>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-left: 18px; margin-top: 4px; line-height: 1.4;">
+                            Veille technologique, partage de connaissances et vulgarisation IT en équipe.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Colonne Certifications et Langues -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="card-title" style="margin-bottom: 15px;">🏆 Certifications</h3>
+                <ul>
+                    <li>
+                        <strong>Microsoft Certified : Azure Fundamentals (AZ-900)</strong><br>
+                        <span style="color: var(--text-muted); font-size: 0.9rem;"><em>En préparation</em> - Validation des concepts fondamentaux du Cloud Microsoft Azure.</span>
+                    </li>
+                </ul>
+
+                <h3 class="card-title" style="margin-top: 30px; margin-bottom: 15px;">🌍 Langues</h3>
+                <ul>
+                    <li><strong>Français :</strong> Avancé (C1)</li>
+                    <li><strong>Anglais :</strong> Avancé (C1)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Call To Action RH (Nouveau) -->
+    <footer class="footer-pro">
+        <div class="cta-container" data-aos="zoom-in">
+            <h2><i class="fas fa-handshake"></i> Prêt à renforcer votre équipe technique ?</h2>
+            <p>
+                Je suis à la recherche d'une <strong>alternance Cloud & DevOps</strong> (rythme 1 sem / 3 sem) à partir de <strong>septembre 2026</strong>.<br>
+                Vous avez un projet ambitieux ou des enjeux d'infrastructure ? Discutons de la manière dont je peux y contribuer.
+            </p>
+            <div class="cta-buttons">
+                <a href="mailto:ayachamed1919@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> M'envoyer un email
+                </a>
+                <a href="https://linkedin.com/in/mohamed-ayacha" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-linkedin"></i> Découvrir mon profil
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Scripts de la page -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    // Animations au défilement
+    AOS.init({
+        once: true,
+        offset: 50,
+        duration: 800
+    });
+
+    // Texte animé (Hero section)
+    new Typed('#typed', {
+        strings: [
+            'Aspirant ingénieur Cloud & DevOps.',
+            'Développeur Full-Stack.',
+            'Passionné d\'Infrastructure as Code.',
+            'Automatisation & SysAdmin.'
+        ],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000,
+        loop: true
+    });
+
+    // Configuration des particules (Fond Cloud/Réseau)
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 60, density: { enable: true, value_area: 800 } },
+            color: { value: '#38bdf8' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.3, random: false },
+            size: { value: 3, random: true },
+            line_linked: {
+                enable: true, distance: 150, color: '#475569', opacity: 0.4, width: 1
+            },
+            move: {
+                enable: true, speed: 2, direction: 'none', random: false, 
+                straight: false, out_mode: 'out', bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: { enable: true, mode: 'grab' },
+                onclick: { enable: true, mode: 'push' },
+                resize: true
+            },
+            modes: {
+                grab: { distance: 140, line_linked: { opacity: 1 } },
+                push: { particles_nb: 4 }
+            }
+        },
+        retina_detect: true
+    });
+</script>
+</body>
+</html>
